@@ -3,10 +3,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <title>Ariél Torres</title>
-    <link rel="stylesheet" href="css/main.css">
+
+    <title>{Title}</title>
+	<link rel="shortcut icon" href="{Favicon}" />
+	<meta name="Description" content="{MetaDescription}" />
+	
+    <link rel="stylesheet" href="http://static.tumblr.com/u269tms/nsSndembt/main.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="http://static.tumblr.com/u269tms/0lindcroo/main.js"></script>
     <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,29 +21,30 @@
 		
 		<!-- Nav menu -->
 		<div class="nav-container">
+	
 			<!-- Pop-up menu -->
 			<nav class="nav-menu">			
 				<ul>
-					<li>
-						<a href="services.html" class="nav-link">
+					<li class="transition">
+						<a href="" class="nav-link transition">
 							<div>Art</div>
 						</a>
 					</li>
 					
-					<li>
-						<a href="contact.html" class="nav-link">
+					<li class="transition">
+						<a href="" class="nav-link transition">
 							<div>Design</div>
 						</a>
 					</li>
 					
-					<li>
-						<a href="careers.html" class="nav-link">
+					<li class="transition">
+						<a href="" class="nav-link transition">
 							<div>Photography</div>
 						</a>
 					</li>
 					
-					<li>
-						<a href="careers.html" class="nav-link">
+					<li class="transition">
+						<a href="" class="nav-link transition">
 							<div>About</div>
 						</a>
 					</li>
@@ -48,10 +53,375 @@
 			<!-- end pop-up menu -->
 			
 			<nav class="nav-menu-button">
-				<img src="imgs/menu-bg.png" alt="Menu">
+				<img src="http://static.tumblr.com/u269tms/drrndcqgq/menu-bg.png" alt="Menu">
 			</nav>
 		</div>
 		<!-- end nav menu -->
+
+
+
+		<!-- posts -->		
+		<div class="l-main">
+			{block:Posts} 
+			
+				<!-- #TEXT POST -->
+				
+				{block:Text} 
+				<div class="post post-text">
+					{block:Title}
+						<h2><a href="{Permalink}">{Title}</a></h2>
+					{/block:Title}
+				
+					<div class="post-bodytext">
+						{Body}
+					</div>
+
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>				
+				{/block:Text}
+				
+				
+				
+				<!-- #PHOTO POST -->
+				
+				{block:Photo} 
+				<div class="post post-photo">
+				
+					<div class="post-photo-photo">
+											
+						<!-- Don't display smaller 500px photo if there is a high res available -->
+											
+						<img src="{PhotoURL-500}" {block:HighRes} style="display:none" {/block:HighRes} />
+						{block:HighRes}
+						    <img src="{PhotoURL-HighRes}">
+						{/block:HighRes}
+
+						{block:Caption}
+						<div class="post-bodytext">
+							{Caption}
+						</div>
+						{/block:Caption}
+						
+					</div>
+
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>				
+				{/block:Photo}
+				
+				
+				
+				<!-- #PANORAMA POST -->
+				
+				{block:Panorama} 
+				<div class="post post-panorama">
+				
+					<div class="post-panorama-photo">
+											
+						{LinkOpenTag}
+							<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />
+						{LinkCloseTag}
+												
+						{block:Caption} 
+						<div class="post-bodytext">
+							{Caption}
+						</div>
+						{/block:Caption}
+						
+					</div>
+
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>
+				
+				{/block:Panorama}
+			
+			
+			
+			
+			
+				<!-- #PHOTOSET POST -->
+				
+				{block:Photoset} 
+				<div class="post post-photoset">
+					<div class="post-photoset-photo">
+											
+						<!-- Don't display smaller 700px photo if there is a high res available -->
+						{block:Photos}
+					        <img src="{PhotoURL-700}" {block:HighRes} style="display:none" {/block:HighRes} />
+					        						
+							{block:HighRes}
+							    <img src="{PhotoURL-HighRes}">
+							{/block:HighRes}
+							
+							{block:Caption}
+					            {Caption}
+					        {/block:Caption}
+
+						{/block:Photos}
+
+
+						{block:Caption} 
+						<div class="post-bodytext">							
+							{Caption}
+						</div>	
+						{/block:Caption}
+					</div>
+					
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>
+				
+				{/block:Photoset}
+			
+		
+		
+						
+				<!-- #Quote POST -->
+				
+				{block:Quote} 
+				<div class="post post-quote">
+					
+					<div class="post-quotemark">&#8220;</div>					
+					<div class="post-quote-quote">
+						<strong>
+							{Quote}
+						</strong>
+					</div>
+					<div class="post-quotemark" style="float:right;">&#8221;</div>		
+					
+
+					{block:Source}
+						<div class="post-bodytext">							
+							{Source}
+						</div>	
+					{/block:Source}
+
+					
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>
+				
+				{/block:Quote}
+				
+				
+				
+				
+				
+				<!-- #LINK POST -->
+				
+				{block:Link} 
+				<div class="post post-link">
+					
+					<h2>
+						<a href="{URL}" {Target}>{Name}</a>
+					</h2>
+					
+					{block:Description}
+					<div class="post-bodytext">							
+						{Description}
+					</div>	
+					{/block:Description}
+				
+					
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>
+				
+				{/block:Link}
+				
+				
+								
+				
+				<!-- #CHAT POST -->
+				
+				{block:Chat} 
+				<div class="post post-chat">
+					
+					{block:Title}
+					<h2>
+						<a href="{Permalink}">{Title}</a>
+					</h2>
+					{/block:Title}
+					
+					
+					{block:Lines}
+					<div class="post-bodytext">							
+						<ul>
+							<li class="user_{UserNumber}">
+		                        {block:Label}
+		                            <strong> {Label} </strong>
+		                        {/block:Label}
+	
+		                        {Line}
+		                    </li>
+	                    </ul>
+					</div>	
+					{/block:Lines}
+				
+					
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>
+				
+				{/block:Chat}
+				
+				
+								
+				
+				<!-- #AUDIO POST -->
+				
+				{block:Audio} 
+				<div class="post post-audio">
+										
+					{AudioEmbed}					
+					
+					<ul class="post-audio-meta">
+						{block:Artist}
+							<li>{Artist}</li>
+						{/block:Artist}
+						
+									
+						{block:Album}
+							<li><em>{Album}</em></li>
+						{/block:Album}
+						
+						{block:TrackName}
+							<li>"{TrackName}"</li>
+						{/block:TrackName}
+					</ul>
+						
+					{block:Caption}
+					<div class="post-bodytext">							
+						{Caption}
+					</div>	
+					{/block:Caption}
+				
+					
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>
+				
+				{/block:Audio}
+				
+				
+							
+				
+				
+				<!-- #VIDEO POST -->
+				
+				{block:Video} 
+				<div class="post post-video">
+
+                    {Video-700}
+						
+					{block:Caption}
+					<div class="post-bodytext">							
+						{Caption}
+					</div>	
+					{/block:Caption}				
+					
+					<div class="post-footer clearfix">
+						<div class="post-footer-date">
+							<a href="{Permalink}">{ShortDayOfWeek} {DayOfMonth} {ShortMonth} {Year}</a>
+						</div>
+						
+						<ul class="like_and_reblog_buttons">
+							<li class="transition">{LikeButton color="white" size="15"}</li>
+							<li class="transition">{ReblogButton color="white" size="15"}</li>
+						</ul>
+					</div>
+				</div>
+				
+				{/block:Video}
+			
+			{/block:Posts}
+			
+			
+			<div class="l-footer clearfix">
+	            {block:NextPage}
+				<a class="leftarrow transition" href="{NextPage}">
+					<img src="http://static.tumblr.com/u269tms/qmxndcrjj/leftarrow.png">
+					<span class="leftarrow-label">Past</span>
+				</a>
+				{block:NextPage}
+				
+				{block:PreviousPage}
+				<a class="rightarrow transition" href="{PreviousPage}">
+					<img src="http://static.tumblr.com/u269tms/bYindcrjw/rightarrow.png">
+					<span class="rightarrow-label">Future</span>
+				</a>
+				{/block:PreviousPage}
+	        </div>
+	        
+	        
+		</div> <!-- end l-main -->
+		<!-- end posts -->
 		
 	</body>
 </html>
