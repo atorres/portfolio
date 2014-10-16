@@ -8,12 +8,13 @@
 	<link rel="shortcut icon" href="{Favicon}" />
 	<meta name="Description" content="{MetaDescription}" />
 	
-    <link rel="stylesheet" href="http://static.tumblr.com/u269tms/nsSndembt/main.css">
+    <link rel="stylesheet" href="http://static.tumblr.com/u269tms/RyEndip54/main.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://static.tumblr.com/u269tms/0lindcroo/main.js"></script>
+    <script src="http://static.tumblr.com/u269tms/qOhndifty/main.js"></script>
     <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    
 </head>
 
 	<body>
@@ -48,17 +49,28 @@
 							<div>About</div>
 						</a>
 					</li>
+					
+					<li class="transition">
+						<a href="/" class="nav-link transition">
+							<div>Blog</div>
+						</a>
+					</li>
 				</ul>
 			</nav>
 			<!-- end pop-up menu -->
 			
 			<nav class="nav-menu-button">
-				<img src="http://static.tumblr.com/u269tms/drrndcqgq/menu-bg.png" alt="Menu">
+				<img src="http://static.tumblr.com/u269tms/XLIndifx1/menu-bg.png" alt="Menu">
 			</nav>
 		</div>
 		<!-- end nav menu -->
 
-
+		<!-- header image - uses previouspage block to only show header on first page  -->
+		<!-- mobile size header -->
+		<img class="header-m" src="http://static.tumblr.com/u269tms/elsndiniq/header-m.jpg" {block:PreviousPage} style="display:none;" {/block:PreviousPage}>
+		<!-- desktop size header -->
+		<img class="header-d" src="http://static.tumblr.com/u269tms/Y0bndilcf/header.jpg" {block:PreviousPage} style="display:none;" {/block:PreviousPage}>
+		
 
 		<!-- posts -->		
 		<div class="l-main">
@@ -171,20 +183,7 @@
 				<div class="post post-photoset">
 					<div class="post-photoset-photo">
 											
-						<!-- Don't display smaller 700px photo if there is a high res available -->
-						{block:Photos}
-					        <img src="{PhotoURL-700}" {block:HighRes} style="display:none" {/block:HighRes} />
-					        						
-							{block:HighRes}
-							    <img src="{PhotoURL-HighRes}">
-							{/block:HighRes}
-							
-							{block:Caption}
-					            {Caption}
-					        {/block:Caption}
-
-						{/block:Photos}
-
+						{Photoset}							
 
 						{block:Caption} 
 						<div class="post-bodytext">							
@@ -409,7 +408,7 @@
 					<img src="http://static.tumblr.com/u269tms/qmxndcrjj/leftarrow.png">
 					<span class="leftarrow-label">Past</span>
 				</a>
-				{block:NextPage}
+				{/block:NextPage}
 				
 				{block:PreviousPage}
 				<a class="rightarrow transition" href="{PreviousPage}">

@@ -1,4 +1,18 @@
 $(document).ready(function () {
+	/* Fix photoset responsiveness bug on iphone */
+	function resizePhotosets(){
+	    var parentWidth = document.body.querySelector('.html_photoset').offsetWidth; 
+	    var photosets = document.body.querySelectorAll('iframe.photoset');
+	    for(var i = 0; i < photosets.length; ++i){
+	        var photoset = photosets[i];
+	        photoset.width = parentWidth;
+	    }   
+	}
+	window.onload = resizePhotosets;
+	window.onresize = resizePhotosets;
+
+
+
 	$(function() {
 
 		/*******************
@@ -9,12 +23,12 @@ $(document).ready(function () {
 			/* Define fade in/fade out functions */
 			function menuFadeIn() {
 				$('.nav-menu').fadeIn({queue: false, duration: '100'});
-				$('.nav-menu').animate({ 'margin-bottom': '1.75em' }, '100');					
+				$('.nav-menu').animate({ 'margin-bottom': '1.25em' }, '100');					
 			}
 			
 			function menuFadeOut() {
 				$('.nav-menu').fadeOut({queue: false, duration: '100'});
-				$('.nav-menu').animate({ 'margin-bottom': '0' }, '100');			
+				$('.nav-menu').animate({ 'margin-bottom': '-2em' }, '100');			
 			}
 			
 			/* Click handler */

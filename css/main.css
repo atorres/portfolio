@@ -169,7 +169,7 @@
 			scales to fit page, retains aspect ratio
 			http://css-tricks.com/perfect-full-page-background-image/
 			*/
-			background: url("http://static.tumblr.com/u269tms/mQzndcrkb/bg.jpg") no-repeat center center fixed; 
+			background: url("http://static.tumblr.com/u269tms/SFwndi3q3/bg_mobile.jpg") no-repeat center center fixed; 
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
@@ -211,6 +211,27 @@
 			line-height: 1.5em;
 		}
 		
+		iframe, object, embed {
+            max-width: 100%;
+        }
+		
+		@media screen and (min-width: 730px) {
+			html {
+				/*
+				background image
+				larger image for larger devices
+				scales to fit page, retains aspect ratio
+				http://css-tricks.com/perfect-full-page-background-image/
+				*/
+				background: url("http://static.tumblr.com/u269tms/mQzndcrkb/bg.jpg") no-repeat center center fixed; 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				
+			}
+
+		}
 		  	
 		  		
 /***********************
@@ -229,12 +250,37 @@
  			margin-bottom: 5em;
  		}
  		
+ 		.header-m {
+            max-width: 100%;
+            padding: 1em;
+        }
+        
+        .header-d { 
+	        display: none; /* don't show desktop header on mobile */
+        }
+        
+        @media screen and (min-width: 730px) { /* desktop - don't show mobile header */
+	 		.header-m {
+				display: none;
+	        }
+	        
+	        .header-d {
+	        	display: inline;
+	        	max-width: 100%;
+	            padding: 2em;
+	        }
+        }
+ 		
  		.post {
  			margin-top: 5em;
  			background-color: rgba(0, 0, 0, .7);
  			border-top: 1px solid #2F8EFF;
  			padding: 2em 2em 0em 2em;
  		}
+ 		
+ 		.soundcloud_audio_player {
+            max-height: 10em;
+        }
  		
  		/* bodytext stuff */
  		.post-bodytext {
@@ -336,28 +382,24 @@
 			bottom: 1em;
 			z-index: 101;
 		}
-		
-		.nav-menu-button {
-			border: 1px solid white;
-			padding: .5em .25em;
-			-webkit-border-radius: 2px;
-			-moz-border-radius: 2px;
-			border-radius: 2px;
-			width: 8em;
-		}
-		
+			
 		.nav-menu-button img {
-			width: 60%;
+			width: 9em;
 			margin-left: auto;
 			margin-right: auto;
 			display: block;
+			cursor: pointer;
 		}
 		
 		.nav-menu { /* pop-up nav menu */
 			display: none;
 			width: 100%;
 			right: 0;
-			padding-top: 2em; /* extra padding to allow user some margin for error in moving cursor */
+			margin-bottom: -2em;
+			padding: 1em;
+            padding-bottom: .1em;
+            border-top: 1px solid #2F8EFF;
+			background-color: rgba(0, 0, 0, 0.5); /* add black background to menu because on mobile devices it most likely is popping up over content */
 		}
 		
 		.nav-link {
@@ -383,6 +425,19 @@
 	 		z-index: 100;
 	 		position: fixed;
 	 	}
+	 	
+	 	
+	/********************************
+	 * #Menu module desktop         *
+	 ********************************/	 	
+
+	 	@media screen and (min-width: 730px) {
+			.nav-menu { /* pop-up nav menu */
+				background: none; /* no need for menu background on desktop because it is popping up over blank space and therefore readable */
+				border: none;
+			}
+
+		}
 	 	
 /***********************
  * #Post footer module *
@@ -443,7 +498,7 @@
  		.leftarrow, .rightarrow {
 			height: 4em;
 			width: auto;
-			opacity: .25;
+			opacity: .5;
 			text-decoration: none;
  		}
  		
