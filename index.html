@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, width=device-width">
-
-    <title>{Title}</title>
-	<link rel="shortcut icon" href="{Favicon}" />
-	<meta name="Description" content="{MetaDescription}" />
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <meta name="viewport" content="initial-scale=1.0, width=device-width">
 	
-    <link rel="stylesheet" href="http://static.tumblr.com/u269tms/RyEndip54/main.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://static.tumblr.com/u269tms/qOhndifty/main.js"></script>
-    <!--[if IE]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    
-</head>
+		<title>{Title}</title>
+		<link rel="shortcut icon" href="{Favicon}" />
+		<meta name="Description" content="{MetaDescription}" />
+		
+	    <link rel="stylesheet" href="http://static.tumblr.com/u269tms/6Unndt6ns/main.css">
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		
+		<!-- swipebox includes -->
+	    <!-- http://brutaldesign.github.io/swipebox/ -->
+		<script src="http://static.tumblr.com/u269tms/4Wondt6pn/jquery.swipebox.js"></script>
+		<link rel="stylesheet" href="http://static.tumblr.com/u269tms/pGFndt6qq/swipebox.css">
+
+		<script src="http://static.tumblr.com/u269tms/Pkzndt6on/main.js"></script>
+		<!--[if IE]>
+	        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	    <![endif]-->
+	    
+	    
+<!--
+	    	Fix photoset responsiveness bug on iphone
+	    	Don't use this code on gallery pages because it fucks up the swipebox plugin
+-->
+	    <script type="text/javascript">	
+			function resizePhotosets(){
+			    var parentWidth = document.body.querySelector('.html_photoset').offsetWidth; 
+			    var photosets = document.body.querySelectorAll('iframe.photoset');
+			    for(var i = 0; i < photosets.length; ++i){
+			        var photoset = photosets[i];
+			        photoset.width = parentWidth;
+			    }   
+			}
+			window.onload = resizePhotosets;
+			window.onresize = resizePhotosets;
+	    </script>
+	    
+	</head>
 
 	<body>
 		<div id="lightbox"></div>
@@ -27,25 +51,19 @@
 			<nav class="nav-menu">			
 				<ul>
 					<li class="transition">
-						<a href="" class="nav-link transition">
+						<a href="/art" class="nav-link transition">
 							<div>Art</div>
 						</a>
 					</li>
 					
 					<li class="transition">
-						<a href="" class="nav-link transition">
+						<a href="/design" class="nav-link transition">
 							<div>Design</div>
 						</a>
 					</li>
-					
+								
 					<li class="transition">
-						<a href="" class="nav-link transition">
-							<div>Photography</div>
-						</a>
-					</li>
-					
-					<li class="transition">
-						<a href="" class="nav-link transition">
+						<a href="/about" class="nav-link transition">
 							<div>About</div>
 						</a>
 					</li>
@@ -67,9 +85,9 @@
 
 		<!-- header image - uses previouspage block to only show header on first page  -->
 		<!-- mobile size header -->
-		<img class="header-m" src="http://static.tumblr.com/u269tms/elsndiniq/header-m.jpg" {block:PreviousPage} style="display:none;" {/block:PreviousPage}>
+		<img class="header-m" src="http://static.tumblr.com/u269tms/UEWndro6i/header-m.jpg" {block:PreviousPage} style="display:none;" {/block:PreviousPage}>
 		<!-- desktop size header -->
-		<img class="header-d" src="http://static.tumblr.com/u269tms/Y0bndilcf/header.jpg" {block:PreviousPage} style="display:none;" {/block:PreviousPage}>
+		<img class="header-d" src="http://static.tumblr.com/u269tms/sUAndro64/header.jpg" {block:PreviousPage} style="display:none;" {/block:PreviousPage}>
 		
 
 		<!-- posts -->		

@@ -1,34 +1,47 @@
+	/* Bind the swipebox behaviour on every link with the "swipebox" class. */
+
+		
+	
 $(document).ready(function () {
-	/* Fix photoset responsiveness bug on iphone */
-	function resizePhotosets(){
-	    var parentWidth = document.body.querySelector('.html_photoset').offsetWidth; 
-	    var photosets = document.body.querySelectorAll('iframe.photoset');
-	    for(var i = 0; i < photosets.length; ++i){
-	        var photoset = photosets[i];
-	        photoset.width = parentWidth;
-	    }   
-	}
-	window.onload = resizePhotosets;
-	window.onresize = resizePhotosets;
-
-
-
+	
+	/* stuff for gallery pages */ 	
+	$( '.swipebox' ).swipebox({
+		hideBarsDelay : 10000, // delay before hiding bars on desktop
+	});
+	
+	$(".thumbnail,.photothumb").fadeTo("slow", 0.8); // Set opacity of thumbnails to fade down to 90% on page load
+	
+	$(".thumbnail,.photothumb").hover(function(){
+			$(this).fadeTo("fast", 1.0);  // Opacity to 100% on hover
+		},function(){
+			$(this).fadeTo("slow", 0.8); // Opacity back to 90% on mouseout
+	});
+	
+	
+	
+	
+	
+	/*******************
+	/* Hide/show menu  *
+	********************/
 	$(function() {
 
-		/*******************
-		/* Hide/show menu  *
-		********************/
+		
 			var isMenuActive = false; /* when true, clicking anywhere in the document but the menu will hide the menu */			
 			
 			/* Define fade in/fade out functions */
 			function menuFadeIn() {
 				$('.nav-menu').fadeIn({queue: false, duration: '100'});
-				$('.nav-menu').animate({ 'margin-bottom': '1.25em' }, '100');					
+				$('.nav-menu').animate({ 'margin-bottom': '.25em' }, '100');
+				isMenuActive = !isMenuActive;
+				$("#lightbox").toggle();					
 			}
 			
 			function menuFadeOut() {
 				$('.nav-menu').fadeOut({queue: false, duration: '100'});
-				$('.nav-menu').animate({ 'margin-bottom': '-2em' }, '100');			
+				$('.nav-menu').animate({ 'margin-bottom': '-5em' }, '100');
+				isMenuActive = !isMenuActive;			
+				$("#lightbox").toggle();
 			}
 			
 			/* Click handler */
@@ -41,9 +54,7 @@ $(document).ready(function () {
 					menuFadeIn();
 				}
 				
-				event.stopPropagation(); /* prevent click event from bubbling up dom tree and activating document click handler to hide menu */
-				isMenuActive = !isMenuActive;
-				$("#lightbox").toggle();				
+				event.stopPropagation(); /* prevent click event from bubbling up dom tree and activating document click handler to hide menu */				
 			});
 			
 			/* Hover handler */
@@ -60,12 +71,11 @@ $(document).ready(function () {
 			
 			/* Clicking outside the menu (i.e. clicking the lightbox) will hide the menu  */
 			$("#lightbox").click(function(event) {
-				$(".nav-menu").slideToggle("fast");
-				$("#lightbox").toggle();
-
-				if(isMenuActive) {
-					isMenuActive = !isMenuActive;
-				} 
+				if(isMenuActive) { /* then fade the menu out */
+					menuFadeOut();
+				}
+				
+				
 			});	
 
 		/***********************
